@@ -8,3 +8,16 @@ class BaseClassOnlyError(Exception):
 class UnexpectedError(Exception):
     pass
 
+class __Base(object):
+    def __init__(self):
+        self.wrapped = None
+        raise BaseClassOnlyError, "This is just a template class, \
+        don't use it except as a template."
+
+class iTunes(__Base):
+    "This is the main liTunes COM object wrapper."
+    def __init__(self):
+        self.wrapped = win32com.client.Dispatch("iTunes.Application")
+        
+
+        
